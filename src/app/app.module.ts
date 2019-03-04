@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageModule } from './home-page/home-page.module';
+
 
 @NgModule({
   declarations: [
@@ -11,8 +11,7 @@ import { HomePageModule } from './home-page/home-page.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HomePageModule,
+    AppRoutingModule,   
     
   ],
   providers: [],
