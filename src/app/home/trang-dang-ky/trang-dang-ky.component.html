@@ -6,40 +6,103 @@
 
         <div class="form-group">
           <label for="">Tài khoản</label>
-          <input type="text" class="form-control"ngModel name="TaiKhoan">
+          <input type="text" class="form-control" ngModel name="TaiKhoan" required #taikhoan='ngModel'>
+          <div *ngIf="taikhoan.errors && (taikhoan.touched || taikhoan.dirty)">
+            <div class="alert alert-danger" *ngIf="taikhoan.errors.required">
+              Vui lòng nhập tài khoản!
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="">Mật Khẩu</label>
-          <input type="text" class="form-control" ngModel name="MatKhau">
+          <input type="text" class="form-control" ngModel name="MatKhau" required #matkhau='ngModel' minlength="10"
+            maxlength="20">
+          <div *ngIf="matkhau.errors && (matkhau.touched || matkhau.dirty)">
+            <!-- Kiểm tra rỗng -->
+            <div *ngIf="matkhau.errors.required" class="alert alert-danger">
+              Vui lòng nhập mật khẩu!
+            </div>
+            <!-- Kiểm tra lenght -->
+            <div *ngIf="matkhau.errors.minlength || matkhau.errors.maxlength" class="alert alert-danger">
+              Mật khẩu phải từ 10 đến 20 kí tự!
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="">Họ Tên</label>
-          <input type="text" class="form-control" ngModel name="HoTen">
+          <input [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+          "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+          "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' type="text" class="form-control" ngModel name="HoTen" required #hoten='ngModel'
+            minlength="10" maxlength="40">
+          <div *ngIf="hoten.errors && (hoten.touched || hoten.dirty)">
+            <div *ngIf="hoten.errors.pattern" class="alert alert-danger">
+              Vui lòng nhập họ tên là kí tự!
+            </div>
+            <div *ngIf="hoten.errors.minlength || hoten.errors.maxlength" class="alert alert-danger">
+              Họ tên từ 10 đến 40 kí tự!
+            </div>
+            <div *ngIf="hoten.errors.required" class="alert alert-danger">
+              Vui lòng nhập họ tên!
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="">Email</label>
-          <input type="text" class="form-control" ngModel name="Email">
+          <input type="text" class="form-control" ngModel name="Email" required #email='ngModel' [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+          + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"'>
+          <div *ngIf="email.errors && (email.touched || email.dirty)">
+            <div class="alert alert-danger" *ngIf="email.errors.required">
+              Vui lòng nhập email!
+            </div>
+            <div *ngIf="email.errors.pattern" class="alert alert-danger">
+              Vui lòng nhập đúng định dạng email!
+              Ví dụ: example@gmail.com
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="">Số điện thoại</label>
-          <input type="text" class="form-control" ngModel name="SoDT">
+          <input type="text" class="form-control" ngModel name="SoDT" required>
         </div>
 
         <div class="form-group">
           <label for="">Loại người dùng</label>
-          <input type="radio" ngModel name="MaLoaiNguoiDung"   value="KhachHang">Khách Hàng
+          <input type="radio" ngModel name="MaLoaiNguoiDung" value="KhachHang">Khách Hàng
           <input type="radio" ngModel name="MaLoaiNguoiDung" value="QuanTri">Quản trị
         </div>
 
         <div class="form-group">
-          <button class="btn btn-success" type="submit">Đăng ký</button>
+          <button class="btn btn-success" [disabled]="formDangKy.invalid" type="submit">Đăng ký</button>
         </div>
 
       </form>
     </div>
   </div>
+</div>
+
+<div class="table">
+  <table class="table table-striped">
+    <thead>
+        <th>Tài khoản</th>
+        <th>Mật khẩu</th>
+        <th>Email</th>
+        <th>Họ tên</th>
+        <th>Số DT</th>
+        <th>Mã loại người dùng</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nguoiDung of mangNguoiDungDangKy">
+        <td>{{nguoiDung.TaiKhoan}}</td>
+        <td>{{nguoiDung.MatKhau}}</td>
+        <td>{{nguoiDung.Email}}</td>
+        <td>{{nguoiDung.HoTen}}</td>
+        <td>{{nguoiDung.SoDT}}</td>
+        <td>{{nguoiDung.MaLoaiNguoiDung}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

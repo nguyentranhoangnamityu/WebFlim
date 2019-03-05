@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-trang-dang-ky',
@@ -6,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trang-dang-ky.component.css']
 })
 export class TrangDangKyComponent implements OnInit {
-
+  mangNguoiDungDangKy:any[] = [];
   constructor() { }
-
+  @ViewChild('formDangKy') formDK:NgForm;
   ngOnInit() {
   }
   DangKy(value){
-    console.log(value);
+    this.mangNguoiDungDangKy.push(value);
+    this.formDK.reset();
   }
 }
