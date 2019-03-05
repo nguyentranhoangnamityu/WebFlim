@@ -11,5 +11,7 @@ export class TrangDangKyComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  DangKy(value){
+    console.log(value);
+  }
 }

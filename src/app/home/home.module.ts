@@ -9,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PhimComponent } from './phim/phim.component';
 import { TrangDangKyComponent } from './trang-dang-ky/trang-dang-ky.component';
 import { TrangDangNhapComponent } from './trang-dang-nhap/trang-dang-nhap.component';
-
+import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     HomeLayoutComponent, 
@@ -22,7 +22,8 @@ import { TrangDangNhapComponent } from './trang-dang-nhap/trang-dang-nhap.compon
     TrangDangKyComponent, 
     TrangDangNhapComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     HomeLayoutComponent, 
