@@ -5,7 +5,7 @@
         <h4 class="display-4">ĐĂNG KÝ</h4>
 
         <div class="form-group">
-          <label for="">Tài khoản</label>
+          <label for="">* Tài khoản</label>
           <input type="text" class="form-control" ngModel name="TaiKhoan" required #taikhoan='ngModel'>
           <div *ngIf="taikhoan.errors && (taikhoan.touched || taikhoan.dirty)">
             <div class="alert alert-danger" *ngIf="taikhoan.errors.required">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-          <label for="">Mật Khẩu</label>
+          <label for="">* Mật Khẩu</label>
           <input type="text" class="form-control" ngModel name="MatKhau" required #matkhau='ngModel' minlength="10"
             maxlength="20">
           <div *ngIf="matkhau.errors && (matkhau.touched || matkhau.dirty)">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-          <label for="">Họ Tên</label>
+          <label for="">* Họ Tên</label>
           <input [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
           "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
           "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' type="text" class="form-control" ngModel name="HoTen" required #hoten='ngModel'
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group">
-          <label for="">Email</label>
+          <label for="">* Email</label>
           <input type="text" class="form-control" ngModel name="Email" required #email='ngModel' [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
           + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"'>
           <div *ngIf="email.errors && (email.touched || email.dirty)">
@@ -65,14 +65,14 @@
         </div>
 
         <div class="form-group">
-          <label for="">Số điện thoại</label>
+          <label for="">* Số điện thoại</label>
           <input type="text" class="form-control" ngModel name="SoDT" required>
         </div>
 
         <div class="form-group">
           <label for="">Loại người dùng</label>
-          <input type="radio" ngModel name="MaLoaiNguoiDung" value="KhachHang">Khách Hàng
-          <input type="radio" ngModel name="MaLoaiNguoiDung" value="QuanTri">Quản trị
+          <input type="radio" class="ml-3" ngModel name="MaLoaiNguoiDung" value="KhachHang">Khách Hàng
+          <input type="radio" class="ml-2" ngModel name="MaLoaiNguoiDung" value="QuanTri">Quản trị
         </div>
 
         <div class="form-group">
@@ -87,12 +87,13 @@
 <div class="table">
   <table class="table table-striped">
     <thead>
-        <th>Tài khoản</th>
-        <th>Mật khẩu</th>
-        <th>Email</th>
-        <th>Họ tên</th>
-        <th>Số DT</th>
-        <th>Mã loại người dùng</th>
+      <th>Tài khoản</th>
+      <th>Mật khẩu</th>
+      <th>Email</th>
+      <th>Họ tên</th>
+      <th>Số DT</th>
+      <th>Mã loại người dùng</th>
+      <th>Thao tác</th>
     </thead>
     <tbody>
       <tr *ngFor="let nguoiDung of mangNguoiDungDangKy">
@@ -102,6 +103,17 @@
         <td>{{nguoiDung.HoTen}}</td>
         <td>{{nguoiDung.SoDT}}</td>
         <td>{{nguoiDung.MaLoaiNguoiDung}}</td>
+        <td>
+          <button 
+          [attr.data-taiKhoan]="nguoiDung.TaiKhoan" 
+          [attr.data-matKhau]="nguoiDung.MatKhau" 
+          [attr.data-email]="nguoiDung.Email" 
+          [attr.data-hoTen]="nguoiDung.HoTen" 
+          [attr.data-soDT]="nguoiDung.SoDT" 
+          [attr.data-maLoaiND]="nguoiDung.MaLoaiNguoiDung" 
+          class="btn btn-primary" (click)="CapNhat()">
+          Cập nhật</button>
+        </td>
       </tr>
     </tbody>
   </table>

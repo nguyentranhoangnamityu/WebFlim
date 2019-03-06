@@ -12,6 +12,25 @@ export class TrangDangKyComponent implements OnInit {
   @ViewChild('formDangKy') formDK:NgForm;
   ngOnInit() {
   }
+  CapNhat(thongTinNguoiDung){
+    //Lay thong tin nguoi dung tu data-[attribute]
+    let taikhoan = thongTinNguoiDung.getAttribute('data-taiKhoan');
+    let matkhau = thongTinNguoiDung.getAttribute('data-matKhau');
+    let email = thongTinNguoiDung.getAttribute('data-email');
+    let hoten = thongTinNguoiDung.getAttribute('data-hoTen');
+    let sodt = thongTinNguoiDung.getAttribute('data-soDT');
+    let maloaind = thongTinNguoiDung.getAttribute('data-maLoaiND');
+    //Gán lai gia tri cho form thong qua formDK.setValue
+    // Giá trị gắn lại trên form must be object
+    this.formDK.setValue({
+      taiKhoan : taikhoan,
+      matKhau : matkhau,
+      email : email,
+      hoTen : hoten,
+      soDT : sodt,
+      maLoaiND : maloaind,
+    })
+  }
   DangKy(value){
     this.mangNguoiDungDangKy.push(value);
     this.formDK.reset();
