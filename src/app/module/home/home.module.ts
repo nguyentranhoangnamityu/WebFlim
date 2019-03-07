@@ -9,29 +9,40 @@ import { FooterComponent } from './footer/footer.component';
 import { PhimComponent } from './phim/phim.component';
 import { TrangDangKyComponent } from './trang-dang-ky/trang-dang-ky.component';
 import { TrangDangNhapComponent } from './trang-dang-nhap/trang-dang-nhap.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+
+const homeRoute: Routes = [{
+  path: '', component: HomeLayoutComponent, children: [
+    { path: 'dangky', component: TrangDangKyComponent},
+    { path: 'dangnhap', component: TrangDangNhapComponent}
+  ]
+}];
+
 @NgModule({
   declarations: [
-    HomeLayoutComponent, 
-    IndexComponent, 
-    DetailComponent, 
-    TrangDatGheComponent, 
-    HeaderComponent, 
-    FooterComponent, 
-    PhimComponent, 
-    TrangDangKyComponent, 
+    HomeLayoutComponent,
+    IndexComponent,
+    DetailComponent,
+    TrangDatGheComponent,
+    HeaderComponent,
+    FooterComponent,
+    PhimComponent,
+    TrangDangKyComponent,
     TrangDangNhapComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forChild(homeRoute),
   ],
   exports: [
-    HomeLayoutComponent, 
-    IndexComponent, 
-    DetailComponent, 
-    TrangDatGheComponent, 
-    HeaderComponent, 
-    FooterComponent, 
+    HomeLayoutComponent,
+    IndexComponent,
+    DetailComponent,
+    TrangDatGheComponent,
+    HeaderComponent,
+    FooterComponent,
     PhimComponent,
     TrangDangKyComponent,
     TrangDangNhapComponent

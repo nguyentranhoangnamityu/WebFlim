@@ -82,39 +82,37 @@
       </form>
     </div>
   </div>
-</div>
 
-<div class="table">
-  <table class="table table-striped">
-    <thead>
-      <th>Tài khoản</th>
-      <th>Mật khẩu</th>
-      <th>Email</th>
-      <th>Họ tên</th>
-      <th>Số DT</th>
-      <th>Mã loại người dùng</th>
-      <th>Thao tác</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let nguoiDung of mangNguoiDungDangKy">
-        <td>{{nguoiDung.TaiKhoan}}</td>
-        <td>{{nguoiDung.MatKhau}}</td>
-        <td>{{nguoiDung.Email}}</td>
-        <td>{{nguoiDung.HoTen}}</td>
-        <td>{{nguoiDung.SoDT}}</td>
-        <td>{{nguoiDung.MaLoaiNguoiDung}}</td>
-        <td>
-          <button 
-          [attr.data-taiKhoan]="nguoiDung.TaiKhoan" 
-          [attr.data-matKhau]="nguoiDung.MatKhau" 
-          [attr.data-email]="nguoiDung.Email" 
-          [attr.data-hoTen]="nguoiDung.HoTen" 
-          [attr.data-soDT]="nguoiDung.SoDT" 
-          [attr.data-maLoaiND]="nguoiDung.MaLoaiNguoiDung" 
-          class="btn btn-primary" (click)="CapNhat()">
-          Cập nhật</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+  <div class="table">
+    <table class="table table-striped">
+      <thead>
+        <th>Tài khoản</th>
+        <th>Mật khẩu</th>
+        <th>Email</th>
+        <th>Họ tên</th>
+        <th>Số DT</th>
+        <th>Mã loại người dùng</th>
+        <th>Thao tác</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nguoiDung of mangNguoiDungDangKy">
+          <td>{{nguoiDung.TaiKhoan}}</td>
+          <td>{{nguoiDung.MatKhau}}</td>
+          <td>{{nguoiDung.Email}}</td>
+          <td>{{nguoiDung.HoTen}}</td>
+          <td>{{nguoiDung.SoDT}}</td>
+          <td>{{nguoiDung.MaLoaiNguoiDung}}</td>
+          <td>
+            <button #btnCapNhat [attr.data-taiKhoan]="nguoiDung.TaiKhoan" [attr.data-matKhau]="nguoiDung.MatKhau"
+              [attr.data-email]="nguoiDung.Email" [attr.data-hoTen]="nguoiDung.HoTen" [attr.data-soDT]="nguoiDung.SoDT"
+              [attr.data-maLoaiND]="nguoiDung.MaLoaiNguoiDung" class="btn btn-primary" (click)="CapNhat(btnCapNhat)">
+              Cập nhật</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
 </div>
