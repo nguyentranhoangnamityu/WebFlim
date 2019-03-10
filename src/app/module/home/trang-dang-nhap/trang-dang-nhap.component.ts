@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NguoiDungService } from 'src/app/services/nguoidung.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trang-dang-nhap',
@@ -8,7 +9,7 @@ import { NguoiDungService } from 'src/app/services/nguoidung.service';
 })
 export class TrangDangNhapComponent implements OnInit {
 
-  constructor(private nguoiDungService: NguoiDungService) { }
+  constructor(private nguoiDungService: NguoiDungService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class TrangDangNhapComponent implements OnInit {
           // Thành công: Lưu vào localstorage;
           const sUserLogin: string = JSON.stringify(data);
           localStorage.setItem('userLogin', sUserLogin);
+          this.router.navigate(['/index']);
         } else {
           alert(data);
         }

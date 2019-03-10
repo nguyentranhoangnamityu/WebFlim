@@ -16,7 +16,8 @@ import { Routes, RouterModule } from '@angular/router';
 const homeRoute: Routes = [{
   path: '', component: HomeLayoutComponent, children: [
     { path: 'dangky', component: TrangDangKyComponent},
-    { path: 'dangnhap', component: TrangDangNhapComponent}
+    { path: 'dangnhap', component: TrangDangNhapComponent},
+    { path: 'index', component: IndexComponent}
   ]
 }];
 

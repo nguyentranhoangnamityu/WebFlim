@@ -1,20 +1,34 @@
 <div class="container">
   <h3 class="display-4">Đăng nhập</h3>
   <form #frmDangNhap='ngForm' (ngSubmit)="DangNhap(frmDangNhap.value)">
-      <div class="form-group">
-        <span>Tài khoản</span>
-        <input type="text" ngModel name="TaiKhoan" class="form-control" />
+    <div class="form-group">
+      <span>Tài khoản</span>
+      <input type="text" ngModel name="TaiKhoan" class="form-control" #taikhoan = 'ngModel' required/>
+      <div *ngIf="taikhoan.errors && (taikhoan.touched || taikhoan.dirty)">
+        <div class="alert alert-danger" *ngIf="taikhoan.errors.required">
+          Vui lòng nhập tài khoản!
+        </div>
       </div>
-      <div class="form-group">
-          <span>Mật khẩu</span>
-          <input type="password" class="form-control" name="MatKhau" ngModel/> 
     </div>
-    
-  <div class="form-group">
-      <button type="submit" 
-              class="btn btn-success">
-              Đăng nhập      
+    <div class="form-group">
+      <span>Mật khẩu</span>
+      <input type="password" class="form-control" name="MatKhau" ngModel #matkhau ='ngModel' required minlength="10" maxlength="20"/>
+      <div *ngIf="matkhau.errors && (matkhau.touched || matkhau.dirty)">
+        <!-- Kiểm tra rỗng -->
+        <div *ngIf="matkhau.errors.required" class="alert alert-danger">
+          Vui lòng nhập mật khẩu!
+        </div>
+        <!-- Kiểm tra lenght -->
+        <div *ngIf="matkhau.errors.minlength || matkhau.errors.maxlength" class="alert alert-danger">
+          Mật khẩu phải từ 10 đến 20 kí tự!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">
+        Đăng nhập
       </button>
-</div>
+    </div>
   </form>
 </div>
