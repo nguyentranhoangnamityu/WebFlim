@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailComponent } from './detail.component';
+import { QuanLyPhimComponent } from './quan-ly-phim.component';
 
-describe('DetailComponent', () => {
-  let component: DetailComponent;
-  let fixture: ComponentFixture<DetailComponent>;
+describe('QuanLyPhimComponent', () => {
+  let component: QuanLyPhimComponent;
+  let fixture: ComponentFixture<QuanLyPhimComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailComponent ]
+      declarations: [ QuanLyPhimComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailComponent);
+    fixture = TestBed.createComponent(QuanLyPhimComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

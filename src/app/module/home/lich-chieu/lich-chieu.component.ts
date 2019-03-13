@@ -3,12 +3,13 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { PhimService } from 'src/app/_core/services/phim.service';
 import { Title } from '@angular/platform-browser'
+
 @Component({
-  selector: 'app-phim',
-  templateUrl: './phim.component.html',
-  styleUrls: ['./phim.component.css']
+  selector: 'app-lich-chieu',
+  templateUrl: './lich-chieu.component.html',
+  styleUrls: ['./lich-chieu.component.css']
 })
-export class PhimComponent implements OnInit, OnDestroy {
+export class LichChieuComponent implements OnInit, OnDestroy {
 
   subParam: Subscription;
   phim: any = {};
@@ -26,7 +27,6 @@ export class PhimComponent implements OnInit, OnDestroy {
     this.phimService.layThongTinPhim(maPhim).subscribe((data) => {
       console.log(data);
       this.phim = data;
-
     });
   }
   ngOnDestroy(): void {
@@ -34,5 +34,5 @@ export class PhimComponent implements OnInit, OnDestroy {
       this.subParam.unsubscribe();
     }
   }
-  
+
 }

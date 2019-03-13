@@ -8,6 +8,7 @@ import { AdminModule } from './module/admin/admin.module';
 import { Routes, RouterModule } from '@angular/router';
 
 
+
 const appRouter:Routes = [
   {path: 'home', loadChildren: () => HomeModule},
   {path: '', loadChildren: ()=> HomeModule},
@@ -15,7 +16,8 @@ const appRouter:Routes = [
 ]
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     HttpClientModule,

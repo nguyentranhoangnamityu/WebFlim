@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {NguoiDung} from '../../../_core/models/nguoidung'
 import Swal from 'sweetalert2';
-import {NguoiDungService} from '../../../services/nguoidung.service';
+import {NguoiDungService} from '../../../_core/services/nguoidung.service';
 @Component({
   selector: 'app-trang-dang-ky',
   templateUrl: './trang-dang-ky.component.html',

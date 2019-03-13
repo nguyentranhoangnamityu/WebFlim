@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NguoiDungService } from 'src/app/services/nguoidung.service';
+import { NguoiDungService } from '../../../_core/services/nguoidung.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,5 +27,4 @@ export class TrangDangNhapComponent implements OnInit {
         }
       });
   }
-
 }
